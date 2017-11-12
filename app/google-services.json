@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "399596582057",
+    "firebase_url": "https://eatitorderfood.firebaseio.com",
+    "project_id": "eatitorderfood",
+    "storage_bucket": "eatitorderfood.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399596582057:android:5f1b1f38ba4fb487",
+        "android_client_info": {
+          "package_name": "com.baitap.quan.eatitorderfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399596582057-d8vi90n08j4b35gkspuprbn56gss0oao.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.baitap.quan.eatitorderfood",
+            "certificate_hash": "3c83d4d6e643f7b21543995124b6006cbbd07dcf"
+          }
+        },
+        {
+          "client_id": "399596582057-88dtusfhe9fbln69virksl6bs4eta7d1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoeTgOjkjhzz0f52PxJmg04Q_EwxG8AMk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399596582057-88dtusfhe9fbln69virksl6bs4eta7d1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
