@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnSignUp:
 
-
+                Intent intentSignUp = new Intent(MainActivity.this, SignUp.class);
+                startActivity(intentSignUp);
                 break;
             default:
                 break;
