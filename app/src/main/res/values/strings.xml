@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">EatitOrderFood</string>
+    <string name="slogan">Eat Eat Eat every where hahaha....</string>
+
+    <string name="sign_up">SIGN UP</string>
+    <string name="sign_in">SIGN IN</string>
+
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
 </resources>
