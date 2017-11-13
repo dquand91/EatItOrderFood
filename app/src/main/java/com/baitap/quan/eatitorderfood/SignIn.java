@@ -1,6 +1,7 @@
 package com.baitap.quan.eatitorderfood;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -54,6 +55,11 @@ public class SignIn extends AppCompatActivity {
                             User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
                             if (user.getPassword().equals(edtPassword.getText().toString())){
                                 Toast.makeText(SignIn.this, "Sign in success!", Toast.LENGTH_SHORT).show();
+
+                                Common.currentUser = user;
+                                Intent intentHome = new Intent(SignIn.this, Home.class);
+                                startActivity(intentHome);
+                                finish();
                             } else {
                                 Toast.makeText(SignIn.this, "Wrong Password!", Toast.LENGTH_SHORT).show();
                             }
