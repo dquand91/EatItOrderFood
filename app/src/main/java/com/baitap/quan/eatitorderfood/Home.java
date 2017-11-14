@@ -2,20 +2,30 @@ package com.baitap.quan.eatitorderfood;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.baitap.quan.eatitorderfood.Listener.ItemClickListenerCustom;
+import com.baitap.quan.eatitorderfood.Model.Category;
+import com.baitap.quan.eatitorderfood.ViewHolder.MenuViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 public class Home extends AppCompatActivity
 		implements NavigationView.OnNavigationItemSelectedListener {
@@ -24,6 +34,8 @@ public class Home extends AppCompatActivity
 	DatabaseReference databaseReference;
 
 	TextView tvFullName;
+	private RecyclerView mRecyclerMenu;
+	private List<Category> mListCategory;
 
 
 	@Override
@@ -62,6 +74,34 @@ public class Home extends AppCompatActivity
 		View headerView = navigationView.getHeaderView(0);
 		tvFullName = (TextView)  headerView.findViewById(R.id.tv_UserName_navigation);
 		tvFullName.setText(Common.currentUser.getName());
+
+		// Load menu
+		mRecyclerMenu = (RecyclerView) findViewById(R.id.recyclerMenu);
+		mRecyclerMenu.setHasFixedSize(true);
+		mRecyclerMenu.setLayoutManager(new LinearLayoutManager(this));
+
+		loadMenuFromFireBase();
+	}
+
+	private void loadMenuFromFireBase() {
+
+		FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter =
+				new FirebaseRecyclerAdapter<Category, MenuViewHolder>(
+						Category.class, R.layout.item_menu_recyclerlist, MenuViewHolder.class,databaseReference) {
+			@Override
+			protected void populateViewHolder(MenuViewHolder viewHolder, Category model, int position) {
+				viewHolder.tvNameMenu.setText(model.getName());
+				Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.imgMenu);
+				final Category itemClicked = model;
+				viewHolder.setListener(new ItemClickListenerCustom() {
+					@Override
+					public void onItemClick(View view, int position, boolean isLongClick) {
+						Toast.makeText(Home.this, ""+itemClicked.getName(), Toast.LENGTH_SHORT).show();
+					}
+				});
+			}
+		};
+		mRecyclerMenu.setAdapter(adapter);
 	}
 
 	@Override

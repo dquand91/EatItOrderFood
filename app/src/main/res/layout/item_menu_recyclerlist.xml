@@ -18,6 +18,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/background"/>
         <TextView
+            android:id="@+id/menu_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
