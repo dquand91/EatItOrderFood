@@ -1,5 +1,6 @@
 package com.baitap.quan.eatitorderfood;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -26,6 +27,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import static com.baitap.quan.eatitorderfood.Common.KEY_INTENT_MENU_ID;
 
 public class Home extends AppCompatActivity
 		implements NavigationView.OnNavigationItemSelectedListener {
@@ -97,6 +100,10 @@ public class Home extends AppCompatActivity
 					@Override
 					public void onItemClick(View view, int position, boolean isLongClick) {
 						Toast.makeText(Home.this, ""+itemClicked.getName(), Toast.LENGTH_SHORT).show();
+
+						Intent intentFood = new Intent(Home.this, FoodList.class);
+						intentFood.putExtra(KEY_INTENT_MENU_ID, String.valueOf(position+1));
+						startActivity(intentFood);
 					}
 				});
 			}

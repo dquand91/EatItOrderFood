@@ -8,5 +8,7 @@ import com.baitap.quan.eatitorderfood.Model.User;
 
 public class Common {
 
+	public static final String KEY_INTENT_MENU_ID = "KEY_INTENT_MENU_ID";
+
 	public static User currentUser;
 }
