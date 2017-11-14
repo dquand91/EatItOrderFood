@@ -27,6 +27,8 @@
         </activity>
         <activity android:name=".FoodList">
         </activity>
+        <activity android:name=".FoodDetail">
+        </activity>
     </application>
 
 </manifest>

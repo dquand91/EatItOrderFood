@@ -1,5 +1,6 @@
 package com.baitap.quan.eatitorderfood;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import static com.baitap.quan.eatitorderfood.Common.KEY_INTENT_FOOD_ID;
 import static com.baitap.quan.eatitorderfood.Common.KEY_INTENT_MENU_ID;
 
 public class FoodList extends AppCompatActivity {
@@ -64,6 +66,42 @@ public class FoodList extends AppCompatActivity {
 					@Override
 					public void onItemClick(View view, int position, boolean isLongClick) {
 						Toast.makeText(FoodList.this, "" + model.getName(), Toast.LENGTH_SHORT).show();
+						// start Food detail activity
+						Intent intentFoodDetail = new Intent(FoodList.this, FoodDetail.class);
+
+
+						// ở đây để lấy được cái id của food với định dạng data như bên dưới.
+						// Tức là lấy được cái số 01, 02, 03 của mỗi item
+//						"Foods" : {
+//							"01" : {
+//								"Description" : "",
+//										"Discount" : "0",
+//										"Image" : "http://medifoods.my/images/menu/p1_ginger_pao.jpg",
+//										"MenuId" : "11",
+//										"Name" : "GINGER PAO",
+//										"Price" : "1000"
+//							},
+//							"02" : {
+//								"Description" : "",
+//										"Discount" : "0",
+//										"Image" : "http://medifoods.my/images/menu/p2_coconut_pao.jpg",
+//										"MenuId" : "11",
+//										"Name" : "COCONUT PAO",
+//										"Price" : "1000"
+//							},
+//							"03" : {
+//								"Description" : "",
+//										"Discount" : "0",
+//										"Image" : "http://medifoods.my/images/menu/p3_red_bean_pao.jpg",
+//										"MenuId" : "11",
+//										"Name" : "RED BEAN PAO",
+//										"Price" : "1000"
+//							},
+//						}
+						intentFoodDetail.putExtra(KEY_INTENT_FOOD_ID, adapter.getRef(position).getKey());
+
+						startActivity(intentFoodDetail);
+
 					}
 				});
 			}
