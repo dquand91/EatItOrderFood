@@ -7,8 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.baitap.quan.eatitorderfood.Database.DataBaseQuan;
 import com.baitap.quan.eatitorderfood.Model.Food;
+import com.baitap.quan.eatitorderfood.Model.Order;
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -65,6 +68,17 @@ public class FoodDetail extends AppCompatActivity {
 		btnCart.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
+				// Thêm 1 Order vào DataBase
+				// Tức là thêm 1 món ăn và số lượng của nó vào database
+				// Để tạo ra 1 order trong bảng "OrderDetail"
+				new DataBaseQuan(getBaseContext()).addToCart(new Order(
+						foodId,
+						currentFood.getName(),
+						numberButton.getNumber(),
+						currentFood.getPrice(),
+						currentFood.getDiscount()
+				));
+				Toast.makeText(FoodDetail.this, "Added To Cart", Toast.LENGTH_SHORT).show();
 
 			}
 		});
