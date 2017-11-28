@@ -148,19 +148,22 @@ public class Home extends AppCompatActivity
 		// Handle navigation view item clicks here.
 		int id = item.getItemId();
 
-//		if (id == R.id.nav_camera) {
-//			// Handle the camera action
-//		} else if (id == R.id.nav_gallery) {
-//
-//		} else if (id == R.id.nav_slideshow) {
-//
-//		} else if (id == R.id.nav_manage) {
-//
-//		} else if (id == R.id.nav_share) {
-//
-//		} else if (id == R.id.nav_send) {
-//
-//		}
+		if (id == R.id.nav_menu) {
+
+		} else if (id == R.id.nav_Cart) {
+			Intent cartIntent = new Intent(Home.this, CartActivity.class);
+			startActivity(cartIntent);
+
+		} else if (id == R.id.nav_order) {
+			Intent orderIntent = new Intent(Home.this, OrderStatus.class);
+			startActivity(orderIntent);
+
+		} else if (id == R.id.nav_signout) {
+			Intent signOutIntent = new Intent(Home.this, SignIn.class);
+			signOutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+			startActivity(signOutIntent);
+
+		}
 
 		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 		drawer.closeDrawer(GravityCompat.START);
